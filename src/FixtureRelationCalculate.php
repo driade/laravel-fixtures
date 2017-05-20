@@ -42,8 +42,6 @@ class FixtureRelationCalculate
                 $object->save();
             }
 
-            $this->assignRelations($leaf[0], $parent, $relation);
-
             if ( ! $this->isComplete($leaf)) {
                 $complete = 0;
             }
@@ -116,9 +114,15 @@ class FixtureRelationCalculate
 
                 break;
 
+            case 'Illuminate\Database\Eloquent\Relations\MorphMany':
+                if ($parent->exists) {
+                    $parent->$relation()->save($leaf);
+                }
+                break;
+
             default:
-                print_r($leaf);
-                die("-" . get_class($parent->$relation()));
+                // print_r($leaf);
+                // die("-" . get_class($parent->$relation()));
         }
 
     }
@@ -165,8 +169,8 @@ class FixtureRelationCalculate
                     break;
 
                 default:
-                    print_r($relation);
-                    die("-" . get_class($parent));
+                    // print_r($relation);
+                    // die("-" . get_class($parent));
 
             }
 

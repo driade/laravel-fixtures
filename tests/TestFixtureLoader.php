@@ -127,6 +127,16 @@ class Test extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Photo', $photo);
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Staff', $photo->imageable);
+    }
 
+    public function testPolymorphic2()
+    {
+        $this->loadSeed(4);
+
+        $staff = FixtureLoader::load(__DIR__ . '/fixtures/polymorphic2');
+
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\Staff', $staff);
+
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\Photo', $staff->photos->first());
     }
 }
