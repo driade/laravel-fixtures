@@ -22,42 +22,17 @@ class Test extends \PHPUnit_Framework_TestCase
         $this->capsule->setAsGlobal();
         $this->schema = $this->capsule->schema();
 
-        $this->schema->dropIfExists('users');
+    }
 
-        $this->schema->create('users', function (\Illuminate\Database\Schema\Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
-
-        $this->schema->dropIfExists('orders');
-
-        $this->schema->create('orders', function (\Illuminate\Database\Schema\Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unsigned()->index();
-            $table->integer('courier_id')->unsigned()->index()->nullable();
-            $table->decimal('total', 7, 2);
-            $table->timestamps();
-        });
-
-        $this->schema->dropIfExists('order_products');
-
-        $this->schema->create('order_products', function (\Illuminate\Database\Schema\Blueprint $table) {
-            $table->increments('id');
-            $table->integer('order_id')->unsigned()->index();
-            $table->integer('quantity')->unsigned();
-            $table->timestamps();
-        });
-
-        $this->schema->dropIfExists('couriers');
-
-        $this->schema->create('couriers', function (\Illuminate\Database\Schema\Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+    private function loadSeed($number)
+    {
+        include __DIR__ . '/tables/' . $number . ".php";
     }
 
     public function testHasMany()
     {
+        $this->loadSeeed(1);
+
         $user = FixtureLoader::load(__DIR__ . '/fixtures/hasMany');
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\User', $user);
@@ -80,6 +55,8 @@ class Test extends \PHPUnit_Framework_TestCase
 
     public function testBelongs()
     {
+        $this->loadSeeed(1);
+
         $order = FixtureLoader::load(__DIR__ . '/fixtures/belongs');
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Order', $order);
@@ -91,6 +68,8 @@ class Test extends \PHPUnit_Framework_TestCase
 
     public function testComplex()
     {
+        $this->loadSeeed(1);
+
         $order = FixtureLoader::load(__DIR__ . '/fixtures/complex');
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Order', $order);
