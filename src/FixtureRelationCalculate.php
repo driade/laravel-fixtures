@@ -38,7 +38,7 @@ class FixtureRelationCalculate
 
             $this->assignRelations($leaf[0], $parent, $relation);
 
-            if ($this->evaluate($leaf)) {
+            if ($this->canSaveObject($leaf)) {
                 $object->save();
             }
 
@@ -82,6 +82,7 @@ class FixtureRelationCalculate
                 break;
 
             case 'Illuminate\Database\Eloquent\Relations\BelongsTo':
+            case 'Illuminate\Database\Eloquent\Relations\MorphTo':
 
                 $parent->$relation()->associate($leaf);
 
@@ -89,7 +90,7 @@ class FixtureRelationCalculate
 
             case 'Illuminate\Database\Eloquent\Relations\BelongsToMany':
 
-                if ($parent->exists && $leaf->exists) {
+                if ($leaf->exists) {
 
                     $ids = [];
 
@@ -106,18 +107,10 @@ class FixtureRelationCalculate
 
                 break;
 
-            case 'Illuminate\Database\Eloquent\Relations\MorphTo':
-
-                if ($parent->exists) {
-                    $parent->$relation()->associate($leaf);
-                }
-
-                break;
-
             case 'Illuminate\Database\Eloquent\Relations\MorphMany':
-                if ($parent->exists) {
-                    $parent->$relation()->save($leaf);
-                }
+
+                $parent->$relation()->save($leaf);
+
                 break;
 
             default:
@@ -127,7 +120,7 @@ class FixtureRelationCalculate
 
     }
 
-    protected function evaluate($leaf)
+    protected function canSaveObject($leaf)
     {
         if ($leaf[0]->exists) {
             return false;
@@ -145,19 +138,7 @@ class FixtureRelationCalculate
 
             switch ($relation) {
                 case 'Illuminate\Database\Eloquent\Relations\BelongsTo':
-
-                    $parent = $prop[0];
-
-                    if ($parent->exists) {
-                        $leaf[0]->$key()->associate($parent);
-                    } else {
-                        $valid = false;
-                    }
-
-                    break;
-
                 case 'Illuminate\Database\Eloquent\Relations\MorphTo':
-                    // Tiene dependencia!
 
                     $parent = $prop[0];
 
@@ -166,8 +147,8 @@ class FixtureRelationCalculate
                     } else {
                         $valid = false;
                     }
-                    break;
 
+                    break;
                 default:
                     // print_r($relation);
                     // die("-" . get_class($parent));
@@ -194,6 +175,7 @@ class FixtureRelationCalculate
             switch ($relation) {
 
                 case 'Illuminate\Database\Eloquent\Relations\BelongsTo':
+                case 'Illuminate\Database\Eloquent\Relations\MorphTo':
 
                     $parent = $prop[0];
 
@@ -220,18 +202,6 @@ class FixtureRelationCalculate
                     }
 
                     if (count(array_diff($ids, $ids2)) || count(array_diff($ids2, $ids))) {
-                        $valid = false;
-                    }
-
-                    break;
-
-                case 'Illuminate\Database\Eloquent\Relations\MorphTo':
-
-                    $parent = $prop[0];
-
-                    if ($parent->exists) {
-                        $leaf[0]->$key()->associate($parent);
-                    } else {
                         $valid = false;
                     }
 

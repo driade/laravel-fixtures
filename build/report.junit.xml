@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" tests="1" assertions="2" failures="0" errors="0" time="0.035397">
-    <testcase name="testPolymorphic2" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="132" assertions="2" time="0.035397"/>
+  <testsuite name="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" tests="8" assertions="47" failures="0" errors="0" time="0.133440">
+    <testcase name="testHasMany" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="32" assertions="23" time="0.051526"/>
+    <testcase name="testBelongs" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="56" assertions="4" time="0.011252"/>
+    <testcase name="testComplex" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="69" assertions="6" time="0.011437"/>
+    <testcase name="testHasOne" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="85" assertions="2" time="0.006723"/>
+    <testcase name="testHasOneInverse" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="95" assertions="2" time="0.005866"/>
+    <testcase name="testBelongsToMany" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="105" assertions="6" time="0.025942"/>
+    <testcase name="testPolymorphic" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="121" assertions="2" time="0.010679"/>
+    <testcase name="testPolymorphic2" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="132" assertions="2" time="0.010015"/>
   </testsuite>
 </testsuites>

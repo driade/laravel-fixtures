@@ -1,3 +1,10 @@
 TAP version 13
-ok 1 - Driade\Fixtures\Test\Test::testPolymorphic2
-1..1
+ok 1 - Driade\Fixtures\Test\Test::testHasMany
+ok 2 - Driade\Fixtures\Test\Test::testBelongs
+ok 3 - Driade\Fixtures\Test\Test::testComplex
+ok 4 - Driade\Fixtures\Test\Test::testHasOne
+ok 5 - Driade\Fixtures\Test\Test::testHasOneInverse
+ok 6 - Driade\Fixtures\Test\Test::testBelongsToMany
+ok 7 - Driade\Fixtures\Test\Test::testPolymorphic
+ok 8 - Driade\Fixtures\Test\Test::testPolymorphic2
+1..8
