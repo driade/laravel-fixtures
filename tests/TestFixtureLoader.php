@@ -125,6 +125,7 @@ class Test extends \PHPUnit_Framework_TestCase
         $photo = FixtureLoader::load(__DIR__ . '/fixtures/polymorphic');
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Photo', $photo);
+
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Staff', $photo->imageable);
 
     }

@@ -1,1 +1,3 @@
 TAP version 13
+ok 1 - Driade\Fixtures\Test\Test::testPolymorphic
+1..1

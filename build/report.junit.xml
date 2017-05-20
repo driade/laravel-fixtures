@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" tests="1" assertions="2" failures="0" errors="0" time="0.031540">
+    <testcase name="testPolymorphic" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="121" assertions="2" time="0.031540"/>
+  </testsuite>
+</testsuites>
