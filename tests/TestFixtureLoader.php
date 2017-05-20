@@ -31,7 +31,7 @@ class Test extends \PHPUnit_Framework_TestCase
 
     public function testHasMany()
     {
-        $this->loadSeeed(1);
+        $this->loadSeed(1);
 
         $user = FixtureLoader::load(__DIR__ . '/fixtures/hasMany');
 
@@ -55,7 +55,7 @@ class Test extends \PHPUnit_Framework_TestCase
 
     public function testBelongs()
     {
-        $this->loadSeeed(1);
+        $this->loadSeed(1);
 
         $order = FixtureLoader::load(__DIR__ . '/fixtures/belongs');
 
@@ -68,7 +68,7 @@ class Test extends \PHPUnit_Framework_TestCase
 
     public function testComplex()
     {
-        $this->loadSeeed(1);
+        $this->loadSeed(1);
 
         $order = FixtureLoader::load(__DIR__ . '/fixtures/complex');
 
@@ -80,5 +80,52 @@ class Test extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Courier', $order->courier);
         $this->assertEquals(1, $order->courier->id);
+    }
+
+    public function testHasOne()
+    {
+        $this->loadSeed(2);
+
+        $owner = FixtureLoader::load(__DIR__ . '/fixtures/hasOne');
+
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\Owner', $owner);
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\Dog', $owner->dog);
+    }
+
+    public function testHasOneInverse()
+    {
+        $this->loadSeed(2);
+
+        $dog = FixtureLoader::load(__DIR__ . '/fixtures/hasOne2');
+
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\Dog', $dog);
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\Owner', $dog->owner);
+    }
+
+    public function testBelongsToMany()
+    {
+        $this->loadSeed(3);
+
+        $author = FixtureLoader::load(__DIR__ . '/fixtures/belongsToMany');
+
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\Author', $author);
+
+        $this->assertEquals(2, $author->books->count());
+
+        foreach ($author->books as $index => $book) {
+            $this->assertInstanceOf('Driade\Fixtures\Test\Models\Book', $book);
+            $this->assertEquals($index + 1, $book->id);
+        }
+    }
+
+    public function testPolymorphic()
+    {
+        $this->loadSeed(4);
+
+        $photo = FixtureLoader::load(__DIR__ . '/fixtures/polymorphic');
+
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\Photo', $photo);
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\Staff', $photo->imageable);
+
     }
 }
