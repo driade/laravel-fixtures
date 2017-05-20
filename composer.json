@@ -1,0 +1,36 @@
+{
+    "name": "driade/laravel-fixtures",
+    "description": "Simple fixtures for laravel",
+    "keywords": ["fixtures", "laravel", "testing"],
+    "homepage": "https://github.com/driade/laravel-fixtures",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Fernández",
+            "email": "david@mundosaparte.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Driade\\Fixtures\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Driade\\Fixtures\\Test\\": "tests"
+        }
+    },
+    "require": {
+        "php": ">=5.3",
+        "illuminate/database": ">=4.2"
+    },
+    "require-dev": {
+        "ext-pdo_sqlite": "*",
+        "phpunit/phpunit": "^4.8.22",
+        "mockery/mockery": "^0.9.9"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
