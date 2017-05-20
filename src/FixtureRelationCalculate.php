@@ -36,7 +36,7 @@ class FixtureRelationCalculate
 
             $object = $leaf[0];
 
-            $this->assignRelations($leaf[0], $parent, $relation);
+            $this->assignRelations($object, $parent, $relation);
 
             if ($this->canSaveObject($leaf)) {
                 $object->save();
