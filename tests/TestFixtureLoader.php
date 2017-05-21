@@ -2,7 +2,7 @@
 
 namespace Driade\Fixtures\Test;
 
-use Driade\Fixtures\FixtureLoader;
+use Driade\Fixtures\Loader;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Test extends \PHPUnit_Framework_TestCase
@@ -33,7 +33,7 @@ class Test extends \PHPUnit_Framework_TestCase
     {
         $this->loadSeed(1);
 
-        $user = FixtureLoader::load(__DIR__ . '/fixtures/hasMany.php');
+        $user = Loader::load(__DIR__ . '/fixtures/hasMany.php');
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\User', $user);
 
@@ -57,7 +57,7 @@ class Test extends \PHPUnit_Framework_TestCase
     {
         $this->loadSeed(1);
 
-        $order = FixtureLoader::load(__DIR__ . '/fixtures/belongs.php');
+        $order = Loader::load(__DIR__ . '/fixtures/belongs.php');
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Order', $order);
         $this->assertEquals(1, $order->id);
@@ -70,7 +70,7 @@ class Test extends \PHPUnit_Framework_TestCase
     {
         $this->loadSeed(1);
 
-        $order = FixtureLoader::load(__DIR__ . '/fixtures/complex.php');
+        $order = Loader::load(__DIR__ . '/fixtures/complex.php');
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Order', $order);
         $this->assertEquals(1, $order->id);
@@ -86,7 +86,7 @@ class Test extends \PHPUnit_Framework_TestCase
     {
         $this->loadSeed(2);
 
-        $owner = FixtureLoader::load(__DIR__ . '/fixtures/hasOne.php');
+        $owner = Loader::load(__DIR__ . '/fixtures/hasOne.php');
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Owner', $owner);
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Dog', $owner->dog);
@@ -96,7 +96,7 @@ class Test extends \PHPUnit_Framework_TestCase
     {
         $this->loadSeed(2);
 
-        $dog = FixtureLoader::load(__DIR__ . '/fixtures/hasOne2');
+        $dog = Loader::load(__DIR__ . '/fixtures/hasOne2.php');
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Dog', $dog);
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Owner', $dog->owner);
@@ -106,7 +106,7 @@ class Test extends \PHPUnit_Framework_TestCase
     {
         $this->loadSeed(3);
 
-        $author = FixtureLoader::load(__DIR__ . '/fixtures/belongsToMany.php');
+        $author = Loader::load(__DIR__ . '/fixtures/belongsToMany.php');
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Author', $author);
 
@@ -122,7 +122,7 @@ class Test extends \PHPUnit_Framework_TestCase
     {
         $this->loadSeed(4);
 
-        $photo = FixtureLoader::load(__DIR__ . '/fixtures/polymorphic.php');
+        $photo = Loader::load(__DIR__ . '/fixtures/polymorphic.php');
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Photo', $photo);
 
@@ -133,7 +133,7 @@ class Test extends \PHPUnit_Framework_TestCase
     {
         $this->loadSeed(4);
 
-        $staff = FixtureLoader::load(__DIR__ . '/fixtures/polymorphic2.php');
+        $staff = Loader::load(__DIR__ . '/fixtures/polymorphic2.php');
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Staff', $staff);
 
@@ -150,7 +150,7 @@ class Test extends \PHPUnit_Framework_TestCase
             );
         }
 
-        $user = FixtureLoader::load(__DIR__ . '/fixtures/classConstant.php');
+        $user = Loader::load(__DIR__ . '/fixtures/classConstant.php');
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\User', $user);
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Order', $user->orders->first());

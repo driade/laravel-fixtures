@@ -1,4 +1,4 @@
-# An easy and fast way to create controlled sets of data for your tests or seeds, out of arrays
+# An easy and fast way to create controlled sets of Eloquent models for your tests or seeds, out of arrays
 
 [![Latest Stable Version](https://poser.pugx.org/driade/laravel-fixtures/v/stable)](https://packagist.org/packages/driade/laravel-fixtures)
 [![Latest Unstable Version](https://poser.pugx.org/driade/laravel-fixtures/v/unstable)](https://packagist.org/packages/driade/laravel-fixtures)
@@ -7,9 +7,11 @@
 [![License](https://poser.pugx.org/driade/laravel-fixtures/license)](https://packagist.org/packages/driade/laravel-fixtures)
 [![Total Downloads](https://poser.pugx.org/driade/laravel-fixtures/downloads)](https://packagist.org/packages/driade/laravel-fixtures)
 
-With this package you can define a set of data with PHP arrays and load it from your tests or seeds. It's made for Laravel Illuminate\Database, so you can plug it in your Laravel projects and also in whatever project depending just on Illuminate\Database outside Laravel.
+With this package you can define a set of data with arrays in PHP and get its representation as Eloquent models.
 
-Here's it's and example definition
+It's made for Laravel Illuminate\Database, so you can plug it in your Laravel projects and also in whichever project depending on Illuminate\Database, outside Laravel Framework.
+
+Here it's and example definition:
 
 ```php
 <?php
@@ -26,22 +28,22 @@ return [
     'orders'    => [
         [
             Order::class,
-            'id'    => 1,
-            'total' => 1,
-            'shipped' > 0,
+            'id'        => 1,
+            'total'     => 1,
+            'shipped'   => 0,
         ],
         [
             Order::class,
-            'id'    => 2,
-            'total' => 1,
-            'shipped' > 1,
+            'id'        => 2,
+            'total'     => 1,
+            'shipped'   => 1,
         ],
     ],
 ];
 
 ```
 
-you can load this definition in, for example, a test, with
+you can load this definition in with
 
 ```php
 $user = FixtureLoader::load(__DIR__ . '/fixtures/fixture1.php');

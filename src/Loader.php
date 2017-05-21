@@ -2,7 +2,7 @@
 
 namespace Driade\Fixtures;
 
-class FixtureLoader
+class Loader
 {
     public function __construct($path)
     {
