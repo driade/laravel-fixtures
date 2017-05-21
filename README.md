@@ -110,6 +110,19 @@ Just load the the fixture file and you'll have the object/s
 $user = Driade\Fixtures\Loader::load(__DIR__ . '/fixtures/fixture1.php');
 ```
 
+It's also possible to pass an array with the data as the input, with the same results
+
+```
+$user = Driade\Fixtures\Loader::load([
+    App\User::class,
+    'total'     => 1,
+    'orders'    => [
+        App\Order::class,
+        'total' =>  20.00
+    ]
+]);
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information of what has changed recently.

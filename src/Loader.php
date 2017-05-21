@@ -4,14 +4,14 @@ namespace Driade\Fixtures;
 
 class Loader
 {
-    public function __construct($path)
+    public function __construct($input)
     {
-        $this->path = $path;
+        $this->input = $input;
     }
 
-    public static function load($path)
+    public static function load($input)
     {
-        $action = new self($path);
+        $action = new self($input);
 
         $action->handle();
 
@@ -20,7 +20,11 @@ class Loader
 
     protected function handle()
     {
-        $this->fixtures = (include $this->path);
+        if (is_string($this->input)) {
+            $this->input = (include $this->input);
+        }
+
+        $this->fixtures = $this->input;
 
         $this->output = (new FixtureTreeMaker($this->fixtures))->handle();
         $this->output = (new FixtureRelationCalculate($this->output))->handle();

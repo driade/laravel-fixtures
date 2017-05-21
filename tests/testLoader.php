@@ -69,6 +69,25 @@ class testLoader extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, $order->user->id);
     }
 
+    public function testBelongsDirectInput()
+    {
+        $this->loadSeed(1);
+
+        $order = Loader::load([
+            'Driade\Fixtures\Test\Models\Order',
+            'total' => 2,
+            'user'  => [
+                'Driade\Fixtures\Test\Models\User',
+            ],
+        ]);
+
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\Order', $order);
+        $this->assertEquals(1, $order->id);
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\User', $order->user);
+
+        $this->assertEquals(1, $order->user->id);
+    }
+
     public function testComplex()
     {
         $this->loadSeed(1);
@@ -151,5 +170,15 @@ class testLoader extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\User', $user);
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Order', $user->orders->first());
+    }
+
+    public function testMultipleRoots()
+    {
+        $this->loadSeed(1);
+
+        $users = Loader::load(__DIR__ . '/fixtures/multipleRoots.php');
+
+        $this->assertTrue(is_array($users));
+        $this->assertEquals(3, count($users));
     }
 }
