@@ -5,7 +5,7 @@ namespace Driade\Fixtures\Test;
 use Driade\Fixtures\Loader;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-class Test extends \PHPUnit_Framework_TestCase
+class testLoader extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
@@ -146,12 +146,6 @@ class Test extends \PHPUnit_Framework_TestCase
     public function testClassConstant()
     {
         $this->loadSeed(1);
-
-        if (PHP_MAJOR_VERSION < 5 && PHP_MINOR_VERSION < 4) {
-            $this->markTestSkipped(
-                'Run in PHP >= 5.4.'
-            );
-        }
 
         $user = Loader::load(__DIR__ . '/fixtures/classConstant.php');
 
