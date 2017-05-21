@@ -7,9 +7,15 @@ return [
     'orders' => [
         [
             Order::class,
-            'total'   => 10,
-            'courier' => [
+            'total'    => 10,
+            'courier'  => [
                 Courier::class,
+            ],
+            'products' => [
+                [
+                    OrderProduct::class,
+                    'quantity' => 1,
+                ],
             ],
         ],
     ],

@@ -190,6 +190,7 @@ class testLoader extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\User', $user);
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Order', $user->orders->first());
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\OrderProduct', $user->orders->first()->products->first());
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Courier', $user->orders->first()->courier);
     }
 }
