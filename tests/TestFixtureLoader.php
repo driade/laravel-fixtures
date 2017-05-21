@@ -139,4 +139,20 @@ class Test extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\Photo', $staff->photos->first());
     }
+
+    public function testClassConstant()
+    {
+        $this->loadSeed(1);
+
+        if (PHP_MAJOR_VERSION < 5 && PHP_MINOR_VERSION < 4) {
+            $this->markTestSkipped(
+                'Run in PHP >= 5.4.'
+            );
+        }
+
+        $user = FixtureLoader::load(__DIR__ . '/fixtures/classConstant');
+
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\User', $user);
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\Order', $user->orders->first());
+    }
 }

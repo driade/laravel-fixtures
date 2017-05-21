@@ -7,4 +7,5 @@ ok 5 - Driade\Fixtures\Test\Test::testHasOneInverse
 ok 6 - Driade\Fixtures\Test\Test::testBelongsToMany
 ok 7 - Driade\Fixtures\Test\Test::testPolymorphic
 ok 8 - Driade\Fixtures\Test\Test::testPolymorphic2
-1..8
+ok 9 - Driade\Fixtures\Test\Test::testClassConstant
+1..9

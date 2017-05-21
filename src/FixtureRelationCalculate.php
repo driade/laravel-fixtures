@@ -96,7 +96,7 @@ class FixtureRelationCalculate
 
                     $leaf_key = $leaf->getKeyName();
 
-                    foreach ($parent->$relation()->get() as $object) {
+                    foreach ($parent->$relation()->get() as $object) { // Try lo leverage the number of queries here
                         $ids[] = $object->$leaf_key;
                     }
 
