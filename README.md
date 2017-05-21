@@ -43,13 +43,13 @@ return [
 
 ```
 
-you can load this definition in with
+you can load this fixture with
 
 ```php
-$user = Loader::load(__DIR__ . '/fixtures/fixture1.php');
+$user = Loader::load('fixtures/fixture1.php');
 ```
 
-$user will have then (simplified)
+$user will then have (simplified)
 
 ```
 Driade\Fixtures\Test\Models\User Object

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" tests="9" assertions="49" failures="0" errors="0" time="0.145062">
-    <testcase name="testHasMany" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="32" assertions="23" time="0.051850"/>
-    <testcase name="testBelongs" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="56" assertions="4" time="0.012988"/>
-    <testcase name="testComplex" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="69" assertions="6" time="0.012038"/>
-    <testcase name="testHasOne" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="85" assertions="2" time="0.006591"/>
-    <testcase name="testHasOneInverse" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="95" assertions="2" time="0.006298"/>
-    <testcase name="testBelongsToMany" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="105" assertions="6" time="0.021003"/>
-    <testcase name="testPolymorphic" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="121" assertions="2" time="0.010931"/>
-    <testcase name="testPolymorphic2" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="132" assertions="2" time="0.010501"/>
-    <testcase name="testClassConstant" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="143" assertions="2" time="0.012862"/>
+  <testsuite name="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" tests="9" assertions="49" failures="0" errors="0" time="0.139637">
+    <testcase name="testHasMany" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="35" assertions="23" time="0.057764"/>
+    <testcase name="testBelongs" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="59" assertions="4" time="0.010486"/>
+    <testcase name="testComplex" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="72" assertions="6" time="0.010473"/>
+    <testcase name="testHasOne" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="88" assertions="2" time="0.005657"/>
+    <testcase name="testHasOneInverse" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="98" assertions="2" time="0.006206"/>
+    <testcase name="testBelongsToMany" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="108" assertions="6" time="0.018565"/>
+    <testcase name="testPolymorphic" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="124" assertions="2" time="0.010513"/>
+    <testcase name="testPolymorphic2" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="135" assertions="2" time="0.009604"/>
+    <testcase name="testClassConstant" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="146" assertions="2" time="0.010369"/>
   </testsuite>
 </testsuites>

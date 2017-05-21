@@ -9,6 +9,9 @@ class Test extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
+
+        touch(__DIR__ . '/database.sqlite');
+
         $this->capsule = new Capsule;
 
         $this->capsule->addConnection([
