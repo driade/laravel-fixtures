@@ -29,7 +29,9 @@ class Loader
         $this->output = (new FixtureTreeMaker($this->fixtures))->handle();
         $this->output = (new FixtureRelationCalculate($this->output))->handle();
 
-        $this->output = $this->output[0];
-
+        // Do we have just one child?
+        if (is_object($this->output[0])) {
+            $this->output = $this->output[0];
+        }
     }
 }

@@ -181,4 +181,15 @@ class testLoader extends \PHPUnit_Framework_TestCase
         $this->assertTrue(is_array($users));
         $this->assertEquals(3, count($users));
     }
+
+    public function testResolverMiddle()
+    {
+        $this->loadSeed(1);
+
+        $user = Loader::load(__DIR__ . '/fixtures/resolveMiddle.php');
+
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\User', $user);
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\Order', $user->orders->first());
+        $this->assertInstanceOf('Driade\Fixtures\Test\Models\Courier', $user->orders->first()->courier);
+    }
 }
