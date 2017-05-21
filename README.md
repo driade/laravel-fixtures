@@ -46,7 +46,7 @@ return [
 you can load this definition in with
 
 ```php
-$user = FixtureLoader::load(__DIR__ . '/fixtures/fixture1.php');
+$user = Loader::load(__DIR__ . '/fixtures/fixture1.php');
 ```
 
 $user will have then (simplified)
@@ -107,7 +107,7 @@ composer require driade/laravel-fixtures
 Just load the the fixture file and you'll have the object/s
 
 ```
-$user = Driade\Fixtures\FixtureLoader::load(__DIR__ . '/fixtures/fixture1.php');
+$user = Driade\Fixtures\Loader::load(__DIR__ . '/fixtures/fixture1.php');
 ```
 
 ## Changelog
