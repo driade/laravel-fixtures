@@ -1,60 +1,112 @@
-# Check by the browser the status of the packages in your composer.json
+# An easy and fast way to create controlled sets of data for your tests or seeds, out of arrays
 
-[![Latest Stable Version](https://poser.pugx.org/driade/anabel/v/stable)](https://packagist.org/packages/driade/anabel)
-[![Latest Unstable Version](https://poser.pugx.org/driade/anabel/v/unstable)](https://packagist.org/packages/driade/anabel)
-[![Build Status](https://travis-ci.org/driade/anabel.svg?branch=master)](https://travis-ci.org/driade/anabel)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/driade/anabel/badges/quality-score.png?b=master&s=ae081333c0aa2e8edfb78c02e1db803e0bbb4ed3)](https://scrutinizer-ci.com/g/driade/anabel/?branch=master)
-[![License](https://poser.pugx.org/driade/anabel/license)](https://packagist.org/packages/driade/anabel)
-[![Total Downloads](https://poser.pugx.org/driade/anabel/downloads)](https://packagist.org/packages/driade/anabel)
+[![Latest Stable Version](https://poser.pugx.org/driade/laravel-fixtures/v/stable)](https://packagist.org/packages/driade/laravel-fixtures)
+[![Latest Unstable Version](https://poser.pugx.org/driade/laravel-fixtures/v/unstable)](https://packagist.org/packages/driade/laravel-fixtures)
+[![Build Status](https://travis-ci.org/driade/laravel-fixtures.svg?branch=master)](https://travis-ci.org/driade/laravel-fixtures)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/driade/laravel-fixtures/badges/quality-score.png?b=master&s=ae081333c0aa2e8edfb78c02e1db803e0bbb4ed3)](https://scrutinizer-ci.com/g/driade/laravel-fixtures/?branch=master)
+[![License](https://poser.pugx.org/driade/laravel-fixtures/license)](https://packagist.org/packages/driade/laravel-fixtures)
+[![Total Downloads](https://poser.pugx.org/driade/laravel-fixtures/downloads)](https://packagist.org/packages/driade/laravel-fixtures)
 
-Anabel provides a visual bridge to the command "composer outdated", in order to review the status of the packages you're using in your project.
+With this package you can define a set of data with PHP arrays and load it from your tests or seeds. It's made for Laravel Illuminate\Database, so you can plug it in your Laravel projects and also in whatever project depending just on Illuminate\Database outside Laravel.
 
+Here's it's and example definition
 
-![Alt text](/docs/screenshot.png?raw=true "Screenshot")
+```php
+<?php
 
+// fixtures/fixture1.php
+
+namespace Driade\Fixtures\Test\Models;
+
+return [
+    User::class,
+    'id'        => 1,
+    'active'    => 1,
+    'confirmed' => 1,
+    'orders'    => [
+        [
+            Order::class,
+            'id'    => 1,
+            'total' => 1,
+            'shipped' > 0,
+        ],
+        [
+            Order::class,
+            'id'    => 2,
+            'total' => 1,
+            'shipped' > 1,
+        ],
+    ],
+];
+
+```
+
+you can load this definition in, for example, a test, with
+
+```php
+$user = FixtureLoader::load(__DIR__ . '/fixtures/fixture1.php');
+```
+
+$user will have then (simplified)
+
+```
+Driade\Fixtures\Test\Models\User Object
+(
+    [attributes:protected] => Array
+    (
+        [id] => 1
+        [active] => 1
+        [confirmed] => 1
+    )
+
+    [relations:protected] => Array
+    (
+        [orders] => Illuminate\Database\Eloquent\Collection Object
+        (
+            [items:protected] => Array
+            (
+                [0] => Driade\Fixtures\Test\Models\Order Object
+                (
+                    [attributes:protected] => Array
+                    (
+                        [id] => 1
+                        [user_id] => 1
+                        [total] => 1
+                        [shipped] => 0
+                    )
+                )
+
+                [1] => Driade\Fixtures\Test\Models\Order Object
+                (
+                    [attributes:protected] => Array
+                    (
+                        [id] => 2
+                        [user_id] => 1
+                        [total] => 1
+                        [shipped] => 1
+                    )
+                )
+            )
+        )
+    )
+)
+```
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require driade/anabel
+composer require driade/laravel-fixtures
 ```
 
 ## Usage
 
-You may display Anabel results, usually, in a route under the admin area of your site. Just add this lines to your controller and you should see the results.
+Just load the the fixture file and you'll have the object/s
 
-```php
-$anabel = new \Driade\Anabel\Anabel;
-
-$anabel->setConfig(['all' => true, 'composer_dir' => __DIR__, 'sort' => true]);
-$anabel->outdated();
-
-echo $anabel->render();
 ```
-
-Anabel will display the output in HTML using Bootstrap.
-
-## Configuration
-
-You can pass an array to setConfig in order to control the behaviour of the package. These are the available options:
-
-```php
-[
-    'all'             => false, // Whether to show all the packages or just which should need an update
-    'composer_dir'    => '.', // Directory where the file composer.json is located
-    'templates_dir'   => __DIR__ . '/views', // Directory where the templates for the output are located
-    'template_header' => 'header.twig.php', // Header of the page, supports Twig
-    'template_body'   => 'body.twig.php', // Body of the page, supports Twig
-    'template_footer' => 'footer.twig.php', // Footer of the page, supports Twig
-    'sort'            => true, // Whether to sort the packages by the need of an update
-];
+$user = Driade\Fixtures\FixtureLoader::load(__DIR__ . '/fixtures/fixture1.php');
 ```
-
-## Memory issues
-
-This program runs in the browser and calls Composer via API, and it's possible that you have a low memory limit in your php.ini that will make Composer fail.
 
 ## Changelog
 

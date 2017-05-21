@@ -1,14 +1,266 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" tests="9" assertions="49" failures="0" errors="0" time="0.161983">
-    <testcase name="testHasMany" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="32" assertions="23" time="0.067990"/>
-    <testcase name="testBelongs" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="56" assertions="4" time="0.012530"/>
-    <testcase name="testComplex" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="69" assertions="6" time="0.011154"/>
-    <testcase name="testHasOne" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="85" assertions="2" time="0.006825"/>
-    <testcase name="testHasOneInverse" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="95" assertions="2" time="0.006152"/>
-    <testcase name="testBelongsToMany" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="105" assertions="6" time="0.022282"/>
-    <testcase name="testPolymorphic" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="121" assertions="2" time="0.010717"/>
-    <testcase name="testPolymorphic2" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="132" assertions="2" time="0.010797"/>
-    <testcase name="testClassConstant" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="143" assertions="2" time="0.013536"/>
+  <testsuite name="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" tests="9" assertions="49" failures="0" errors="0" time="0.142632">
+    <testcase name="testHasMany" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="32" assertions="23" time="0.049204"/>
+    <testcase name="testBelongs" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="56" assertions="4" time="0.011086"/>
+    <testcase name="testComplex" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="69" assertions="6" time="0.012257"/>
+    <testcase name="testHasOne" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="85" assertions="2" time="0.006776"/>
+    <testcase name="testHasOneInverse" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="95" assertions="2" time="0.006418"/>
+    <testcase name="testBelongsToMany" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="105" assertions="6" time="0.024167"/>
+    <testcase name="testPolymorphic" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="121" assertions="2" time="0.009884"/>
+    <testcase name="testPolymorphic2" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="132" assertions="2" time="0.010512"/>
+    <testcase name="testClassConstant" class="Driade\Fixtures\Test\Test" file="/Users/davidfernandez/htdocs/laravel-fixtures/tests/TestFixtureLoader.php" line="143" assertions="2" time="0.012328">
+      <system-out>Driade\Fixtures\Test\Models\User Object
+(
+    [connection:protected] =&gt; 
+    [table:protected] =&gt; 
+    [primaryKey:protected] =&gt; id
+    [keyType:protected] =&gt; int
+    [incrementing] =&gt; 1
+    [with:protected] =&gt; Array
+        (
+        )
+
+    [perPage:protected] =&gt; 15
+    [exists] =&gt; 1
+    [wasRecentlyCreated] =&gt; 1
+    [attributes:protected] =&gt; Array
+        (
+            [id] =&gt; 1
+            [updated_at] =&gt; 2017-05-21 07:23:43
+            [created_at] =&gt; 2017-05-21 07:23:43
+        )
+
+    [original:protected] =&gt; Array
+        (
+            [id] =&gt; 1
+            [updated_at] =&gt; 2017-05-21 07:23:43
+            [created_at] =&gt; 2017-05-21 07:23:43
+        )
+
+    [casts:protected] =&gt; Array
+        (
+        )
+
+    [dates:protected] =&gt; Array
+        (
+        )
+
+    [dateFormat:protected] =&gt; 
+    [appends:protected] =&gt; Array
+        (
+        )
+
+    [events:protected] =&gt; Array
+        (
+        )
+
+    [observables:protected] =&gt; Array
+        (
+        )
+
+    [relations:protected] =&gt; Array
+        (
+            [orders] =&gt; Illuminate\Database\Eloquent\Collection Object
+                (
+                    [items:protected] =&gt; Array
+                        (
+                            [0] =&gt; Driade\Fixtures\Test\Models\Order Object
+                                (
+                                    [connection:protected] =&gt; default
+                                    [table:protected] =&gt; 
+                                    [primaryKey:protected] =&gt; id
+                                    [keyType:protected] =&gt; int
+                                    [incrementing] =&gt; 1
+                                    [with:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [perPage:protected] =&gt; 15
+                                    [exists] =&gt; 1
+                                    [wasRecentlyCreated] =&gt; 
+                                    [attributes:protected] =&gt; Array
+                                        (
+                                            [id] =&gt; 1
+                                            [user_id] =&gt; 1
+                                            [courier_id] =&gt; 
+                                            [total] =&gt; 1
+                                            [created_at] =&gt; 2017-05-21 07:23:43
+                                            [updated_at] =&gt; 2017-05-21 07:23:43
+                                        )
+
+                                    [original:protected] =&gt; Array
+                                        (
+                                            [id] =&gt; 1
+                                            [user_id] =&gt; 1
+                                            [courier_id] =&gt; 
+                                            [total] =&gt; 1
+                                            [created_at] =&gt; 2017-05-21 07:23:43
+                                            [updated_at] =&gt; 2017-05-21 07:23:43
+                                        )
+
+                                    [casts:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [dates:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [dateFormat:protected] =&gt; 
+                                    [appends:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [events:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [observables:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [relations:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [touches:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [timestamps] =&gt; 1
+                                    [hidden:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [visible:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [fillable:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [guarded:protected] =&gt; Array
+                                        (
+                                            [0] =&gt; *
+                                        )
+
+                                )
+
+                            [1] =&gt; Driade\Fixtures\Test\Models\Order Object
+                                (
+                                    [connection:protected] =&gt; default
+                                    [table:protected] =&gt; 
+                                    [primaryKey:protected] =&gt; id
+                                    [keyType:protected] =&gt; int
+                                    [incrementing] =&gt; 1
+                                    [with:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [perPage:protected] =&gt; 15
+                                    [exists] =&gt; 1
+                                    [wasRecentlyCreated] =&gt; 
+                                    [attributes:protected] =&gt; Array
+                                        (
+                                            [id] =&gt; 2
+                                            [user_id] =&gt; 1
+                                            [courier_id] =&gt; 
+                                            [total] =&gt; 1
+                                            [created_at] =&gt; 2017-05-21 07:23:43
+                                            [updated_at] =&gt; 2017-05-21 07:23:43
+                                        )
+
+                                    [original:protected] =&gt; Array
+                                        (
+                                            [id] =&gt; 2
+                                            [user_id] =&gt; 1
+                                            [courier_id] =&gt; 
+                                            [total] =&gt; 1
+                                            [created_at] =&gt; 2017-05-21 07:23:43
+                                            [updated_at] =&gt; 2017-05-21 07:23:43
+                                        )
+
+                                    [casts:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [dates:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [dateFormat:protected] =&gt; 
+                                    [appends:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [events:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [observables:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [relations:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [touches:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [timestamps] =&gt; 1
+                                    [hidden:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [visible:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [fillable:protected] =&gt; Array
+                                        (
+                                        )
+
+                                    [guarded:protected] =&gt; Array
+                                        (
+                                            [0] =&gt; *
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [touches:protected] =&gt; Array
+        (
+        )
+
+    [timestamps] =&gt; 1
+    [hidden:protected] =&gt; Array
+        (
+        )
+
+    [visible:protected] =&gt; Array
+        (
+        )
+
+    [fillable:protected] =&gt; Array
+        (
+        )
+
+    [guarded:protected] =&gt; Array
+        (
+            [0] =&gt; *
+        )
+
+)
+</system-out>
+    </testcase>
   </testsuite>
 </testsuites>

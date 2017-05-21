@@ -20,7 +20,7 @@ class FixtureLoader
 
     protected function handle()
     {
-        $this->fixtures = (include $this->path . '.php');
+        $this->fixtures = (include $this->path);
 
         $this->output = (new FixtureTreeMaker($this->fixtures))->handle();
         $this->output = (new FixtureRelationCalculate($this->output))->handle();
