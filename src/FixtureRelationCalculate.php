@@ -112,10 +112,6 @@ class FixtureRelationCalculate
                 $parent->$relation()->save($leaf);
 
                 break;
-
-            default:
-                // print_r($leaf);
-                // die("-" . get_class($parent->$relation()));
         }
 
     }
@@ -149,9 +145,6 @@ class FixtureRelationCalculate
                     }
 
                     break;
-                default:
-                    // print_r($relation);
-                    // die("-" . get_class($parent));
 
             }
 
