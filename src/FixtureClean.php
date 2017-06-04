@@ -20,13 +20,14 @@ class FixtureClean
 
     protected function clean(&$tree)
     {
+        $wasOne = false;
+
         if (is_object($tree[0])) {
-            $val = [$tree];
-        } else {
-            $val = $tree;
+            $tree   = [$tree];
+            $wasOne = true;
         }
 
-        foreach ($val as &$leaf) {
+        foreach ($tree as &$leaf) {
 
             foreach ($leaf as $key => &$prop) {
                 if (is_numeric($key)) {
@@ -37,6 +38,10 @@ class FixtureClean
                     $this->clean($prop);
                 }
             }
+        }
+
+        if ($wasOne) {
+            $tree = array_pop($tree);
         }
     }
 }

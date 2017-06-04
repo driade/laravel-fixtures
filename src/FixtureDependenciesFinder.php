@@ -20,13 +20,14 @@ class FixtureDependenciesFinder
 
     protected function findDependencies($tree)
     {
+        $wasOne = false;
+
         if (is_object($tree[0])) {
-            $val = [$tree];
-        } else {
-            $val = $tree;
+            $tree   = [$tree];
+            $wasOne = true;
         }
 
-        foreach ($val as $leaf) {
+        foreach ($tree as $leaf) {
 
             foreach ($leaf as $key => $props) {
 
@@ -37,6 +38,10 @@ class FixtureDependenciesFinder
 
             }
 
+        }
+
+        if ($wasOne) {
+            $tree = array_pop($tree);
         }
     }
 
@@ -65,6 +70,7 @@ class FixtureDependenciesFinder
 
                     $this->dependencies[$prop_reference][] = (object) [
                         'parent' => $reference,
+                        'key'    => $key,
                         'type'   => $relation,
                     ];
 

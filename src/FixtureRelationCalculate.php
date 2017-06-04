@@ -31,13 +31,14 @@ class FixtureRelationCalculate
     {
         $complete = 1;
 
+        $wasOne = false;
+
         if (is_object($tree[0])) {
-            $val = [$tree];
-        } else {
-            $val = $tree;
+            $tree   = [$tree];
+            $wasOne = true;
         }
 
-        foreach ($val as $leaf) {
+        foreach ($tree as $leaf) {
 
             $object = $leaf[0];
 
@@ -62,6 +63,10 @@ class FixtureRelationCalculate
                 }
 
             }
+        }
+
+        if ($wasOne) {
+            $tree = array_pop($tree);
         }
 
         return $complete;
@@ -135,7 +140,7 @@ class FixtureRelationCalculate
             if (is_numeric($key)) {
                 continue;
             }
-
+            echo get_class($leaf[0]) . "\n";
             $relation = get_class($leaf[0]->$key());
 
             switch ($relation) {
@@ -143,7 +148,7 @@ class FixtureRelationCalculate
                 case 'Illuminate\Database\Eloquent\Relations\MorphTo':
 
                     if (is_array($prop)) {
-                        $parent = $prop[0][0];
+                        $parent = $prop[0];
                     } else {
                         $parent = $prop;
                     }
@@ -164,6 +169,7 @@ class FixtureRelationCalculate
             $valid = false;
         }
 
+        echo (int) $valid;
         return $valid;
     }
 
@@ -185,7 +191,7 @@ class FixtureRelationCalculate
                 case 'Illuminate\Database\Eloquent\Relations\MorphTo':
 
                     if (is_array($prop)) {
-                        $parent = $prop[0][0];
+                        $parent = $prop[0];
                     } else {
                         $parent = $prop;
                     }

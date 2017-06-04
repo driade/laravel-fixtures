@@ -20,13 +20,14 @@ class FixtureReferencesCreator
 
     protected function createReferences(&$tree)
     {
+        $wasOne = false;
+
         if (is_object($tree[0])) {
-            $val = [$tree];
-        } else {
-            $val = $tree;
+            $tree   = [$tree];
+            $wasOne = true;
         }
 
-        foreach ($val as &$leaf) {
+        foreach ($tree as &$leaf) {
 
             $hasReference = false;
 
@@ -52,6 +53,10 @@ class FixtureReferencesCreator
             if ( ! $hasReference) {
                 array_push($leaf, ':' . uniqid());
             }
+        }
+
+        if ($wasOne) {
+            $tree = array_pop($tree);
         }
     }
 }
