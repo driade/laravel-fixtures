@@ -32,10 +32,12 @@ class FixtureRelationCalculate
         $complete = 1;
 
         if (is_object($tree[0])) {
-            $tree = [$tree];
+            $val = [$tree];
+        } else {
+            $val = $tree;
         }
 
-        foreach ($tree as $leaf) {
+        foreach ($val as $leaf) {
 
             $object = $leaf[0];
 

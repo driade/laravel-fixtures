@@ -21,10 +21,12 @@ class FixtureReferencesCreator
     protected function createReferences(&$tree)
     {
         if (is_object($tree[0])) {
-            $tree = [$tree];
+            $val = [$tree];
+        } else {
+            $val = $tree;
         }
 
-        foreach ($tree as &$leaf) {
+        foreach ($val as &$leaf) {
 
             $hasReference = false;
 

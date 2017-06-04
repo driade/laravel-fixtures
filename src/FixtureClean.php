@@ -21,10 +21,12 @@ class FixtureClean
     protected function clean(&$tree)
     {
         if (is_object($tree[0])) {
-            $tree = [$tree];
+            $val = [$tree];
+        } else {
+            $val = $tree;
         }
 
-        foreach ($tree as &$leaf) {
+        foreach ($val as &$leaf) {
 
             foreach ($leaf as $key => &$prop) {
                 if (is_numeric($key)) {
