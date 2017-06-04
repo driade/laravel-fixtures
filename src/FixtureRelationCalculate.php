@@ -40,12 +40,16 @@ class FixtureRelationCalculate
 
         foreach ($tree as $leaf) {
 
-            $object = $leaf[0];
+            $object    = $leaf[0];
+            $reference = $this->getReference($leaf);
 
             $this->assignRelations($object, $parent, $relation);
 
             if ($this->canSaveObject($leaf)) {
                 $object->save();
+                $this->cleanReferences($reference);
+            } else {
+                $complete = 0;
             }
 
             if ( ! $this->isComplete($leaf)) {
@@ -140,7 +144,7 @@ class FixtureRelationCalculate
             if (is_numeric($key)) {
                 continue;
             }
-            echo get_class($leaf[0]) . "\n";
+
             $relation = get_class($leaf[0]->$key());
 
             switch ($relation) {
@@ -169,7 +173,6 @@ class FixtureRelationCalculate
             $valid = false;
         }
 
-        echo (int) $valid;
         return $valid;
     }
 
@@ -240,5 +243,21 @@ class FixtureRelationCalculate
         }
 
         return false;
+    }
+
+    protected function cleanReferences($reference)
+    {
+        foreach ($this->dependencies as $k1 => &$prop) {
+            foreach ($prop as $key => $dependency) {
+
+                if ($dependency->parent === $reference) {
+                    unset($prop[$key]);
+                    if (empty($this->dependencies[$k1])) {
+
+                        unset($this->dependencies[$k1]);
+                    }
+                }
+            }
+        }
     }
 }

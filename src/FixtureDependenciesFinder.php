@@ -56,7 +56,7 @@ class FixtureDependenciesFinder
             case 'Illuminate\Database\Eloquent\Relations\HasMany':
             case 'Illuminate\Database\Eloquent\Relations\HasOne':
 
-                if ( ! is_array($props)) {
+                if (isset($props[0]) && $props[0] instanceof \Illuminate\Database\Eloquent\Model) {
                     $props = [$props];
                 }
 
