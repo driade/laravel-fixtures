@@ -11,10 +11,12 @@ class FixtureRelationCalculate
 
     public function handle()
     {
+        $this->tree         = (new FixtureReferencesCreator($this->tree))->handle();
+        $this->dependencies = (new FixtureDependenciesFinder($this->tree))->handle();
+
         $c = 0;
 
         while ( ! $this->process($this->tree)) {
-
             if ($c++ > 100) {
                 throw new \Exception("Unable to resolve");
             }
@@ -25,7 +27,6 @@ class FixtureRelationCalculate
 
     public function process($tree, $parent = null, $relation = '')
     {
-
         $complete = 1;
 
         if (is_object($tree[0])) {
@@ -48,7 +49,7 @@ class FixtureRelationCalculate
 
             foreach ($leaf as $key => $prop) {
 
-                if ($key === 0) {
+                if (is_numeric($key)) {
                     continue;
                 }
 
@@ -122,11 +123,12 @@ class FixtureRelationCalculate
             return false;
         }
 
-        $valid = true;
+        $valid     = true;
+        $reference = $this->getReference($leaf);
 
         foreach ($leaf as $key => $prop) {
 
-            if ($key === 0) {
+            if (is_numeric($key)) {
                 continue;
             }
 
@@ -136,7 +138,11 @@ class FixtureRelationCalculate
                 case 'Illuminate\Database\Eloquent\Relations\BelongsTo':
                 case 'Illuminate\Database\Eloquent\Relations\MorphTo':
 
-                    $parent = $prop[0];
+                    if (is_array($prop)) {
+                        $parent = $prop[0][0];
+                    } else {
+                        $parent = $prop;
+                    }
 
                     if ($parent->exists) {
                         $leaf[0]->$key()->associate($parent);
@@ -146,6 +152,13 @@ class FixtureRelationCalculate
 
                     break;
 
+            }
+
+            $reference = $this->getReference($leaf);
+
+            if (isset($this->dependencies[$reference])) {
+                print_r($this->dependencies[$reference]);
+                $valid = false;
             }
 
         }
@@ -159,7 +172,7 @@ class FixtureRelationCalculate
 
         foreach ($leaf as $key => $prop) {
 
-            if ($key === 0) {
+            if (is_numeric($key)) {
                 continue;
             }
 
@@ -170,7 +183,11 @@ class FixtureRelationCalculate
                 case 'Illuminate\Database\Eloquent\Relations\BelongsTo':
                 case 'Illuminate\Database\Eloquent\Relations\MorphTo':
 
-                    $parent = $prop[0];
+                    if (is_array($prop)) {
+                        $parent = $prop[0][0];
+                    } else {
+                        $parent = $prop;
+                    }
 
                     if ( ! $parent->exists) {
                         $valid = false;
@@ -205,5 +222,16 @@ class FixtureRelationCalculate
         }
 
         return $valid;
+    }
+
+    protected function getReference($leaf)
+    {
+        foreach ($leaf as $key => $prop) {
+            if (is_numeric($key) && $prop[0] === ':') {
+                return $prop;
+            }
+        }
+
+        return false;
     }
 }
