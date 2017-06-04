@@ -11,11 +11,17 @@ class Loader
 
     public static function load($input)
     {
+        $wasOne = count($input) === 1;
+
         $action = new self($input);
 
         $action->handle();
 
-        return $action->output;
+        if ($wasOne) {
+            $action->output = array_pop($action->output);
+        }
+
+        return $action->output[0];
     }
 
     protected function handle()

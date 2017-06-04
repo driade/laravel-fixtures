@@ -40,7 +40,7 @@ class testLoader extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Driade\Fixtures\Test\Models\User', $user);
 
-        $this->assertEquals(3, $user->orders->count());
+        $this->assertEquals(3, $user->orders()->count());
 
         foreach ($user->orders as $index => $order) {
 

@@ -22,6 +22,8 @@ class FixtureRelationCalculate
             }
         }
 
+        $this->tree = (new FixtureClean($this->tree))->handle();
+
         return $this->tree;
     }
 
@@ -119,9 +121,9 @@ class FixtureRelationCalculate
 
     protected function canSaveObject($leaf)
     {
-        if ($leaf[0]->exists) {
-            return false;
-        }
+        // if ($leaf[0]->exists) {
+        //     return false;
+        // }
 
         $valid     = true;
         $reference = $this->getReference($leaf);
@@ -154,13 +156,10 @@ class FixtureRelationCalculate
 
             }
 
-            $reference = $this->getReference($leaf);
+        }
 
-            if (isset($this->dependencies[$reference])) {
-                print_r($this->dependencies[$reference]);
-                $valid = false;
-            }
-
+        if (isset($this->dependencies[$reference])) {
+            $valid = false;
         }
 
         return $valid;
