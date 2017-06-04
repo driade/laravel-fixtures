@@ -38,24 +38,16 @@ class FixtureTreeMaker
                 if ( ! is_array($prop)) {
                     $props[$index] = $prop;
                     unset($data[$index]);
+                } else {
+                    $data[$index] = $this->process($prop);
                 }
+
             }
 
             $data[0] = new $data[0];
 
             foreach ($props as $key => $value) {
                 $data[0]->setAttribute($key, $value);
-            }
-
-            foreach ($data as $index => $prop) {
-
-                if ($index === 0) {
-                    continue;
-                }
-
-                if (is_array($prop)) {
-                    $data[$index] = $this->process($prop);
-                }
             }
 
             $output[] = $data;

@@ -20,29 +20,19 @@ class FixtureDependenciesFinder
 
     protected function findDependencies($tree)
     {
-        $wasOne = false;
-
         if (is_object($tree[0])) {
-            $tree   = [$tree];
-            $wasOne = true;
+            $tree = [$tree];
         }
 
         foreach ($tree as $leaf) {
-
             foreach ($leaf as $key => $props) {
-
                 if ( ! is_numeric($key)) {
                     $this->evaluateDependency($leaf, $key, $props);
                     $this->findDependencies($props);
                 }
-
             }
-
         }
 
-        if ($wasOne) {
-            $tree = array_pop($tree);
-        }
     }
 
     protected function evaluateDependency($leaf, $key, $props)

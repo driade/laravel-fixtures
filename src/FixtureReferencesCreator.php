@@ -44,8 +44,6 @@ class FixtureReferencesCreator
 
                 if (is_numeric($key) && $prop[0] === ':') {
                     $hasReference = true;
-
-                    break;
                 }
 
             }

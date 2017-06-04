@@ -31,11 +31,8 @@ class FixtureRelationCalculate
     {
         $complete = 1;
 
-        $wasOne = false;
-
         if (is_object($tree[0])) {
-            $tree   = [$tree];
-            $wasOne = true;
+            $tree = [$tree];
         }
 
         foreach ($tree as $leaf) {
@@ -58,19 +55,11 @@ class FixtureRelationCalculate
 
             foreach ($leaf as $key => $prop) {
 
-                if (is_numeric($key)) {
-                    continue;
-                }
-
-                if ( ! $this->process($prop, $object, $key)) {
+                if ( ! is_numeric($key) && ! $this->process($prop, $object, $key)) {
                     $complete = 0;
                 }
 
             }
-        }
-
-        if ($wasOne) {
-            $tree = array_pop($tree);
         }
 
         return $complete;
@@ -141,35 +130,34 @@ class FixtureRelationCalculate
 
         foreach ($leaf as $key => $prop) {
 
-            if (is_numeric($key)) {
-                continue;
-            }
+            if ( ! is_numeric($key)) {
 
-            $relation = get_class($leaf[0]->$key());
+                $relation = get_class($leaf[0]->$key());
 
-            switch ($relation) {
-                case 'Illuminate\Database\Eloquent\Relations\BelongsTo':
-                case 'Illuminate\Database\Eloquent\Relations\MorphTo':
+                switch ($relation) {
+                    case 'Illuminate\Database\Eloquent\Relations\BelongsTo':
+                    case 'Illuminate\Database\Eloquent\Relations\MorphTo':
 
-                    if (is_array($prop)) {
-                        $parent = $prop[0];
-                    } else {
-                        $parent = $prop;
-                    }
+                        if (is_array($prop)) {
+                            $parent = $prop[0];
+                        } else {
+                            $parent = $prop;
+                        }
 
-                    if ($parent->exists) {
-                        $leaf[0]->$key()->associate($parent);
-                    } else {
-                        $valid = false;
-                    }
+                        if ($parent->exists) {
+                            $leaf[0]->$key()->associate($parent);
+                        } else {
+                            $valid = false;
+                        }
 
-                    break;
+                        break;
 
+                }
             }
 
         }
 
-        if (isset($this->dependencies[$reference])) {
+        if ($valid && isset($this->dependencies[$reference])) {
             $valid = false;
         }
 
@@ -249,7 +237,6 @@ class FixtureRelationCalculate
     {
         foreach ($this->dependencies as $k1 => &$prop) {
             foreach ($prop as $key => $dependency) {
-
                 if ($dependency->parent === $reference) {
                     unset($prop[$key]);
                     if (empty($this->dependencies[$k1])) {
